@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
+
+const homesWebsiteUrl = "https://homes-two-alpha.vercel.app/";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -72,7 +74,7 @@ export default function Navigation() {
             href="/" 
             className="flex items-center gap-2 group relative z-50"
           >
-            <div className="relative w-[220px] h-[55px] sm:w-[280px] sm:h-[65px] md:w-[320px] md:h-[75px] transition-all duration-500 scale-100 group-hover:scale-105">
+            <div className="relative w-[220px] h-[55px] sm:w-[280px] sm:h-[65px] md:w-[320px] md:h-[75px] lg:w-[180px] lg:h-[60px] xl:w-[220px] xl:h-[70px] 2xl:w-[280px] 2xl:h-[75px] transition-all duration-500 scale-100 group-hover:scale-105">
                <Image 
                  src="/davric-group-logo.png"
                  alt="Davic Group Logo"
@@ -85,7 +87,7 @@ export default function Navigation() {
             </div>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-8">
             {navLinks.map((link) => (
               <div 
                 key={link.name} 
@@ -95,7 +97,7 @@ export default function Navigation() {
               >
                 <Link
                   href={link.href}
-                  className={`text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-300 flex items-center gap-2 py-2 ${
+                  className={`text-[8px] xl:text-[9px] 2xl:text-[10px] font-black uppercase tracking-[0.12em] xl:tracking-[0.18em] 2xl:tracking-[0.3em] transition-all duration-300 flex items-center gap-2 py-2 ${
                     isScrolled ? "text-davic-accent" : "text-white"
                   }`}
                 >
@@ -131,6 +133,14 @@ export default function Navigation() {
                 </AnimatePresence>
               </div>
             ))}
+            <a
+              href={homesWebsiteUrl}
+              aria-label="Visit the Dav-Ric Homes website"
+              className="inline-flex shrink-0 items-center gap-2 bg-davic-primary px-3 py-3 text-[8px] xl:px-4 xl:text-[9px] 2xl:px-5 font-black uppercase tracking-[0.12em] xl:tracking-[0.18em] text-white whitespace-nowrap transition-colors hover:bg-davic-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-davic-primary"
+            >
+              Dav-Ric Homes
+              <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
           </div>
 
           <button
@@ -197,9 +207,18 @@ export default function Navigation() {
               className="relative z-10 py-10 border-t border-white/5"
             >
                <p className="text-[9px] font-black text-white/20 uppercase tracking-[0.5em] mb-8">Strategic Partnerships</p>
+               <a
+                 href={homesWebsiteUrl}
+                 aria-label="Visit the Dav-Ric Homes website"
+                 className="mb-4 flex w-full items-center justify-center gap-3 bg-davic-primary px-6 py-5 text-[10px] font-black uppercase tracking-[0.3em] text-white transition-all duration-500 hover:bg-white hover:text-davic-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-davic-primary"
+                 onClick={() => setMobileMenuOpen(false)}
+               >
+                 Visit Dav-Ric Homes
+                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+               </a>
                <Link 
                  href="/contact" 
-                 className="block w-full text-center bg-davic-primary text-white py-6 text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-davic-primary transition-all duration-500"
+                 className="block w-full border border-white/20 text-center text-white py-5 text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white/5 transition-all duration-500"
                  onClick={() => setMobileMenuOpen(false)}
                 >
                  Collaborate With Us
